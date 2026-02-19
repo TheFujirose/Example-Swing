@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Courses</title>
+    <th:block th:insert="fragments/layout.html :: headerfiles"></th:block>
+</head>
+<body>
+    <main class="container mt-1 mb-1 tp-3">
+        <table th:replace="fragments/views :: view_courses (${courses})"/>
+    </main>
+    <script th:replace="fragments/layout.html :: bootstrap"></script>
+</body>
+</html>

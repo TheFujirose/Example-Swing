@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+  <th:block th:insert="fragments/layout.html :: headerfiles"></th:block>
+</head>
+<body>
+  <header th:replace="fragments/layout.html :: header ('Student Home')"/>
+  <main class="container mt-1 mb-1 tp-3">
+      <div class="card">
+          <form class="card-body" th:action="@{/students/edit}" method="post" th:insert="fragments/forms.html :: student_form (${student})"/>
+      </div>
+  </main>
+  <script th:replace="fragments/layout.html :: bootstrap"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Form Fragments</title>
+    <!--
+    Using ThymeLeaf Parameterized Fragments
+    See:
+    https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html#parameterizable-fragment-signatures
+
+    Note: IntelliJ IDEA and the ThymeLeaf plug in is going to say that the variable's in the selector expressions cannot be resolved;
+    this is not true. It's just an issue with intellij and will render.
+    -->
+</head>
+<body>
+
+    <!-- Course should contain id, title, and instructor attributes -->
+    <th:block th:fragment="course_form (course, action)" th:object="${course}">
+        <!-- Hidden for editing -->
+        <input type="hidden" id="id" th:field="*{id}"/>
+        <div class="mb-1">
+            <label class="form-label" for="title">Title:</label>
+            <input type="text" id="title" th:field="*{title}" placeholder="Enter Title"/>
+        </div>
+        <div class="mb-1">
+            <label class="form-label" for="instructor">Instructor:</label>
+            <input id="instructor" type="text" th:field="*{instructor}" placeholder="Enter Instructor"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </th:block>
+
+
+    <!-- Student should contain id, name, email, and course
+     relationship with course will be added later
+     -->
+    <th:block th:fragment="student_form (student)" th:object="${student}">
+        <input type="hidden" id="id" th:field="*{id}"/>
+        <div class="mb-1">
+            <label class="form-label" for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Example name"/>
+        </div>
+        <div class="mb-1">
+            <label class="form-label" for="email">Email:</label>
+            <input id="email" type="email" th:field="*{email}" placeholder="example@email.com"/>
+        </div>
+        <div class="mb-1">
+            <label class="form-label" for="course-selection">Course:</label>
+            <input class="form-control" list="courses" id="course-selection" placeholder="Type to search"
+                   th:field="*{course}">
+            <!--- Might need to check https://caniuse.com/datalist  -->
+            <datalist id="courses" >
+                    <option th:each="course:${courses}" th:value="${course}"/>
+            </datalist>
+        </div>
+
+        <div class="mb-1">
+            <label class="form-label" for="level-selection">Level of Study:</label>
+            <input class="form-control" list="level-study" id="level-selection" placeholder="Type to search"
+                   th:field="*{level}">
+            <!-- based on https://www.canadim.com/study/become-an-international-student/levels-study/ -->
+            <datalist id="level-study">
+                <option th:each="level:${levels}" th:value="${level}"/>
+            </datalist>
+        </div>
+            <button class="btn btn-primary"  type="submit">Submit</button>
+    </th:block>
+
+</body>
+</html>

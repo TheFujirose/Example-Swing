@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Add</title>
+    <th:block th:insert="layout.html :: headerfiles"></th:block>
+</head>
+<body>
+  <main class="container mt-1 mb-1 tp-3">
+    <h1>Register Course</h1>
+    <!-- Form -->
+    <div th:replace="fragments/forms.html :: course_add (${course})"/>
+  </main>
+  <script th:replace="fragments/layout.html :: bootstrap"></script>
+</body>
+</html>

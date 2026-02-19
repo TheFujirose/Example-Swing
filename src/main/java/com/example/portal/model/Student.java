@@ -1,23 +1,30 @@
 package com.example.portal.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
 /**
  * @author Carson Fujita
  * @since 1.0.0
  *
  * Describes a model of a student in a school with properties defining their
- * - name
- * - email
- * - course
- * - level of study
- * Additionally contains an id
+ * <ul>
+ *     <li>id</li>
+ *     <li>name</li>
+ *     <li>email</li>
+ *     <li>course</li>
+ *     <li>level of study</li>
+ * </ul>
  */
+@Table("student")
 public class Student {
 
     /**
      * The enumerate identification number for the Student.
-     * @since 1.0.0
+     * @since 2.0.0
      */
-    private int id;
+    @Id
+    private Long id;
 
     /**
      * The full-name of the Student.
@@ -32,8 +39,9 @@ public class Student {
     private String email;
 
     /**
-     * The selected course for the Student.
-     * @since 1.0.0
+     * The name of the course the specified student is taking
+     * TODO:The selected @link{Course#id} id for the Student.
+     * @since 2.0.0
      */
     private String course;
 
@@ -56,7 +64,7 @@ public class Student {
      * @see Student#id
      * @see Student#setId
      */
-    public int
+    public Long
     getId() {
         return id;
     }
@@ -67,7 +75,7 @@ public class Student {
      * @param id the id to set
      * @see Student#id
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -119,8 +127,7 @@ public class Student {
      * @see Student#course
      * @see Student#setCourse
      */
-    public String
-    getCourse() {
+    public String getCourse() {
         return course;
     }
 
